@@ -19,6 +19,12 @@ public class MainPage extends BasePage{
     @FindBy(css = "div[id*='ida_regreso'] div[data-source*='origin'] div[class*='countries']")
     private WebElement originCountriesSelectorContainer;
 
+    @FindBy(css = "div[id*='ida_regreso'] div[data-source*='destination'] div[class*='countries']")
+    private WebElement arrivalCountriesSelectorContainer;
+
+    @FindBy(css = "div[id*='ida_regreso'] div[data-source*='destination'] div[class*='countries'] li[data-terminal='SAL']")
+    private WebElement selectSanSalvadorDestinationButton;
+
     @FindBy(css = "div[id*='ida_regreso'] div[data-source*='origin'] div[class*='countries'] li[data-terminal='LAS']")
     private WebElement selectLasVegasDestinationButton;
 
@@ -58,10 +64,18 @@ public class MainPage extends BasePage{
     }
 
     /**
-     * Select las vegas as origin destination
+     * Select Las Vegas as origin destination
      */
     public void clickLasVegasDestinationButton(){
         isElementAvailable(originCountriesSelectorContainer);
         click(selectLasVegasDestinationButton);
+    }
+
+    /**
+     * Select San Salvador as arrival destination
+     */
+    public void clickSanSalvadorDestinationButton() {
+        isElementAvailable(arrivalCountriesSelectorContainer);
+        click(selectSanSalvadorDestinationButton);
     }
 }
