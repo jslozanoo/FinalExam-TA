@@ -14,24 +14,54 @@ public class MainPage extends BasePage{
     private WebElement logoLink;
 
     @FindBy(css = "div[id*='ida_regreso'] input[id*='pbOrigen']")
-    private WebElement fromDestinationInput;
+    private WebElement originDestinationInput;
+
+    @FindBy(css = "div[id*='ida_regreso'] div[data-source*='origin'] div[class*='countries']")
+    private WebElement originCountriesSelectorContainer;
+
+    @FindBy(css = "div[id*='ida_regreso'] div[data-source*='origin'] div[class*='countries'] li[data-terminal='LAS']")
+    private WebElement selectLasVegasDestinationButton;
 
     @FindBy(css = "div[id*='ida_regreso'] input[id*='pbDestino']")
-    private WebElement toDestinationInput;
+    private WebElement arrivalDestinationInput;
 
+    /**
+     * Constructor
+     * @param driver WebDriver
+     */
     public MainPage(WebDriver driver) {
         super(driver);
     }
 
+    /**
+     * Wait main logo visibility
+     * @return boolean
+     */
     public boolean isLogoVisible(){
         return isElementAvailable(logoLink);
     }
 
-    public void setFromDestination(String destination){
-        sendKeys(fromDestinationInput, destination);
+    /**
+     * Send keys to origin destination box.
+     * @param destination origin place
+     */
+    public void setOriginDestination(String destination){
+        sendKeys(originDestinationInput, destination);
     }
 
-    public void setToDestination(String toDestination){
-        sendKeys(toDestinationInput, toDestination);
+    /**
+     * Send keys to arrival destination box
+     * @param toDestination
+     */
+    public void setArrivalDestination(String toDestination){
+        sendKeys(arrivalDestinationInput, toDestination);
+    }
+
+    /**
+     * Select las vegas as origin destination
+     */
+    public void clickLasVegasDestinationButton(){
+        isElementAvailable(originCountriesSelectorContainer);
+        click(selectLasVegasDestinationButton);
     }
 }
