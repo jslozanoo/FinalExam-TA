@@ -78,12 +78,20 @@ public class BasePage {
     }
 
     /**
+     * Scroll down by pixels, by default it's 350 pixels
+     */
+    public void scrollDownByPixels(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,350)" ,"");
+    }
+
+    /**
      * Scroll down until element visibility
      * @param element Web element
      */
     public void scrollDownUntilElementVisibility(WebElement element){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", element);
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     /**
