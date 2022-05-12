@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="example test suite" verbose="1">
+    <parameter name="browser" value="firefox"/>
+    <parameter name="url" value="https://www.avianca.com"/>
+    <test name="example run">
+        <classes>
+            <class name="com.automation.web.tests.ExampleTest"/>
+        </classes>
+    </test>
+</suite>
