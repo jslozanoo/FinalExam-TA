@@ -72,7 +72,7 @@ public class BasePage {
      * @param keys String to send
      */
     public void sendKeys(WebElement element, String keys){
-        if (isElementClickable(element)){
+        if (isElementAvailable(element)){
             element.sendKeys(keys);
         }
     }
