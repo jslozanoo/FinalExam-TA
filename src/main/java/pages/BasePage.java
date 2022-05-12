@@ -1,6 +1,7 @@
 package pages;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -28,11 +29,11 @@ public class BasePage {
     }
 
     /**
-     * True if element is available, false otherwise.
-     * @param element WebElement
+     * Wrapper for visibility event. True if element is available, false otherwise.
+     * @param element Web element to wait visibility
      * @return boolean
      */
-    public boolean isElementVisible(WebElement element){
+    public boolean isElementAvailable(WebElement element){
         try{
             wait.until(ExpectedConditions.visibilityOf(element));
             return true;
@@ -42,8 +43,8 @@ public class BasePage {
     }
 
     /**
-     * True if element is clickable, false otherwise.
-     * @param element WebElement
+     * Wrapper for clickable event. True if element is clickable, false otherwise.
+     * @param element Web element to wait clickable
      * @return boolean
      */
     public boolean isElementClickable(WebElement element){
@@ -56,12 +57,44 @@ public class BasePage {
     }
 
     /**
-     * Click WebElement
-     * @param element WebElement
+     * Wrapper for click event
+     * @param element Web element to click
      */
     public void click(WebElement element){
          if(isElementClickable(element)){
              element.click();
          }
+    }
+
+    /**
+     * Send keys to element until its visible.
+     * @param element Web element to send keys
+     * @param keys String to send
+     */
+    public void sendKeys(WebElement element, String keys){
+        if (isElementClickable(element)){
+            element.sendKeys(keys);
+        }
+    }
+
+    /**
+     * Scroll down until element visibility
+     * @param element Web element
+     */
+    public void scrollDownUntilElementVisibility(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    /**
+     * Scroll down to the bottom of the page
+     */
+    public void scrollDownToBottom(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+    }
+
+    public WebDriver getDriver() {
+        return driver;
     }
 }
