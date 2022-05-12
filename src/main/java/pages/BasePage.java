@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 
     private WebDriver driver;
-    protected WebDriverWait wait;
+    private WebDriverWait wait;
     protected Logger log = Logger.getLogger(BasePage.class);
 
     /**
@@ -35,7 +35,7 @@ public class BasePage {
      */
     public boolean isElementAvailable(WebElement element){
         try{
-            wait.until(ExpectedConditions.visibilityOf(element));
+            getWait().until(ExpectedConditions.visibilityOf(element));
             return true;
         }catch (Exception e){
             return false;
@@ -49,7 +49,7 @@ public class BasePage {
      */
     public boolean isElementClickable(WebElement element){
         try{
-            wait.until(ExpectedConditions.elementToBeClickable(element));
+            getWait().until(ExpectedConditions.elementToBeClickable(element));
             return true;
         }catch (Exception e){
             return false;
@@ -96,5 +96,9 @@ public class BasePage {
 
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public WebDriverWait getWait() {
+        return wait;
     }
 }
