@@ -40,6 +40,24 @@ public class MainPage extends BasePage{
     @FindBy(css = "div[id*='ida_regreso'] div[class*='plus'][data-property='adults']")
     private WebElement addPassengerButton;
 
+    @FindBy(css = "div[id*='ida_regreso'] input[name='pbFechaIda']")
+    private WebElement chooseOriginDate;
+
+    @FindBy(css = "div[id*='ida_regreso'] div[class*='calendar-container'] ")
+    private WebElement calendarContainer;
+
+    @FindBy(css = "div[id*='ida_regreso'] div[data-day='2022.6.18']")
+    private WebElement juneEighteenDate;
+
+    @FindBy(css = "div[id*='ida_regreso'] input[name='pbFechaRegreso']")
+    private WebElement chooseArrivalDate;
+
+    @FindBy(css = "div[id*='ida_regreso'] div[class*='month-next'] em")
+    private WebElement nextMonthButton;
+
+    @FindBy(css = "div[id*='ida_regreso'] div[data-day='2022.8.20']")
+    private WebElement augustTwentyDate;
+
     /**
      * Constructor
      * @param driver WebDriver
@@ -97,5 +115,17 @@ public class MainPage extends BasePage{
 
     public void addPassenger(){
         click(addPassengerButton);
+    }
+
+    public void chooseDates() {
+        click(chooseOriginDate);
+        if (isElementAvailable(calendarContainer)){
+            click(juneEighteenDate);
+        }
+        click(chooseArrivalDate);
+        if (isElementAvailable(calendarContainer)){
+            click(nextMonthButton);
+            click(augustTwentyDate);
+        }
     }
 }
