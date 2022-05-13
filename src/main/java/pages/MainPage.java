@@ -31,6 +31,15 @@ public class MainPage extends BasePage{
     @FindBy(css = "div[id*='ida_regreso'] input[id*='pbDestino']")
     private WebElement arrivalDestinationInput;
 
+    @FindBy(css = "div[id*='ida_regreso'] div[class*='pasajero-container'] span i")
+    private WebElement choosePassengersButton;
+
+    @FindBy(css = "div[id*='ida_regreso'] div[data-name*='pbPasajeros']")
+    private WebElement choosePassengerContainer;
+
+    @FindBy(css = "div[id*='ida_regreso'] div[class*='plus'][data-property='adults']")
+    private WebElement addPassengerButton;
+
     /**
      * Constructor
      * @param driver WebDriver
@@ -77,5 +86,16 @@ public class MainPage extends BasePage{
     public void clickSanSalvadorDestinationButton() {
         isElementAvailable(arrivalCountriesSelectorContainer);
         click(selectSanSalvadorDestinationButton);
+    }
+
+    /**
+     * Click choose passengers button
+     */
+    public void clickChoosePassengersButton(){
+        click(choosePassengersButton);
+    }
+
+    public void addPassenger(){
+        click(addPassengerButton);
     }
 }
