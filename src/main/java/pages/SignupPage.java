@@ -27,6 +27,9 @@ public class SignupPage extends BasePage{
     @FindBy(id = "close")
     private WebElement closeFormButton;
 
+    @FindBy(id = "BtnSubmit")
+    private WebElement signupButton;
+
     /**
      * Constructor
      *
@@ -34,5 +37,41 @@ public class SignupPage extends BasePage{
      */
     public SignupPage(WebDriver driver) {
         super(driver);
+    }
+
+    /**
+     * True if all inputs boxes are displayed. False otherwise
+     * @return Boolean
+     */
+    public boolean areInputsDisplayed(){
+        if (isElementAvailable(signupForm)){
+            return isElementAvailable(firstNameInput) && isElementAvailable(lastNameInput)
+                    && isElementAvailable(emailInput) && isElementAvailable(passwordInput);
+        }
+        else return false;
+    }
+
+    /**
+     * True if signup form title is displayed. False otherwise
+     * @return Boolean
+     */
+    public boolean isTitleDisplayed(){
+        return isElementAvailable(signupTitle);
+    }
+
+    /**
+     * True if close button form is displayed
+     * @return Boolean
+     */
+    public boolean isCloseFormDisplayed(){
+        return isElementAvailable(closeFormButton);
+    }
+
+    /**
+     * True if signup button is clickable. False otherwise
+     * @return Boolean
+     */
+    public boolean isSignupButtonClickable(){
+        return isElementClickable(signupButton);
     }
 }

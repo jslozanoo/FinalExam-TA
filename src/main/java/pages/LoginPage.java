@@ -28,17 +28,25 @@ public class LoginPage extends BasePage{
     }
 
     /**
-     * True if espn logo, login button and signup button are visible. False otherwise
+     * True if login button and signup button are displayed. False otherwise
      * @return Boolean
      */
-    public boolean areElementsVisible(){
+    public boolean areButtonsDisplayed(){
         if (isElementAvailable(loginForm)){
-            return isElementAvailable(espnLogo) && isElementAvailable(loginButton)
-                    && isElementAvailable(signupButton);
+            return isElementAvailable(loginButton) && isElementAvailable(signupButton);
         }
-        else {
-            return false;
+        else return false;
+    }
+
+    /**
+     * True if espn logo is displayed. False otherwise
+     * @return
+     */
+    public boolean isLogoDisplayed(){
+        if (isElementAvailable(loginForm)){
+            return isElementAvailable(espnLogo);
         }
+        else return false;
     }
 
     /**
