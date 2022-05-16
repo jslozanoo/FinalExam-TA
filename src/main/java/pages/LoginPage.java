@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * Page representing login page
+ * @author js.lozano
+ */
 public class LoginPage extends BasePage{
 
     @FindBy(css = "form[class='form-section login']")

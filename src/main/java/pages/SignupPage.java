@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * Page representing signup form.
+ * @author js.lozano
+ */
 public class SignupPage extends BasePage{
 
     @FindBy(css = "form[class='form-section registration']")
