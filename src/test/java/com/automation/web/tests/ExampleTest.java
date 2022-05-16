@@ -12,7 +12,7 @@ import pages.WatchPage;
 public class ExampleTest extends BaseTest {
 
     @Test(dataProvider = "user", dataProviderClass = Data.class)
-    public void exampleTest(User user) {
+    public void exampleTest(User user) throws InterruptedException {
         LoginPage loginPage = homePage.goToLoginPage();
         Assert.assertTrue(loginPage.isLogoDisplayed(), "Logo is not displayed");
         Assert.assertTrue(loginPage.areButtonsDisplayed(), "Buttons are not displayed");
@@ -26,5 +26,10 @@ public class ExampleTest extends BaseTest {
         WatchPage watchPage = mainPage.goToWatchPage();
         Assert.assertTrue(watchPage.AreCarouselsPresent(), "There are no carousels present");
         Assert.assertTrue(watchPage.areCarouselsDisplayed(), "There are no carousels displayed");
+        watchPage.clickCard();
+        Assert.assertTrue(watchPage.isCloseProviderButtonDisplayed(),
+                "Close provider selection button is not displayed");
+        watchPage.closeProviderSelection();
+        mainPage = watchPage.goBackToHomePage();
     }
 }

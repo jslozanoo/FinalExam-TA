@@ -24,6 +24,9 @@ public class WatchPage extends BasePage{
     @FindBy(css = "button[class*='closebtn']")
     private WebElement closeProviderSelectionButton;
 
+    @FindBy(css = "section[class*='contentBox']")
+    private WebElement chooseProviderContainer;
+
     /**
      * Constructor
      *
@@ -54,12 +57,13 @@ public class WatchPage extends BasePage{
     }
 
     /**
-     * Select a specific card in a carrousel
-     * @param element Web element card
+     * Select the second card in the first carrousel
      */
-    public void clickCard(WebElement element){
+    public void clickCard(){
         click(secondCardFirstCarousel);
-        switchToIframe(chooseProviderIframe);
+        if(isElementAvailable(chooseProviderContainer)){
+            switchToIframe(chooseProviderIframe);
+        }
     }
 
     /**
@@ -80,7 +84,8 @@ public class WatchPage extends BasePage{
     /**
      * Go back to home page
      */
-    public void goBackToHomePage(){
+    public MainPage goBackToHomePage(){
         goBack();
+        return new MainPage(getDriver());
     }
 }

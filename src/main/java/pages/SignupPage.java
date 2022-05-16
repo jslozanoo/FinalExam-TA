@@ -100,7 +100,6 @@ public class SignupPage extends BasePage{
     public MainPage createAccount(){
         scrollDownUntilElementVisibility(signupButton);
         click(signupButton);
-        isElementInvisible(signupForm);
 
         return new MainPage(getDriver());
     }

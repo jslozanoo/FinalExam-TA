@@ -128,7 +128,9 @@ public class BasePage {
      * @param iframe WebElement Iframe
      */
     public void switchToIframe(WebElement iframe){
-        getDriver().switchTo().frame(iframe);
+        if (isElementAvailable(iframe)){
+            getDriver().switchTo().frame(iframe);
+        }
     }
 
     public WebDriver getDriver() {
