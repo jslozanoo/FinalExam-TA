@@ -24,5 +24,7 @@ public class ExampleTest extends BaseTest {
                 user.getEmail(), user.getPassword());
         MainPage mainPage =  signupPage.createAccount();
         WatchPage watchPage = mainPage.goToWatchPage();
+        Assert.assertTrue(watchPage.AreCarouselsPresent(), "There are no carousels present");
+        Assert.assertTrue(watchPage.areCarouselsDisplayed(), "There are no carousels displayed");
     }
 }

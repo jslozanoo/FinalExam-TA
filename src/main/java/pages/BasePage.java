@@ -123,6 +123,14 @@ public class BasePage {
         getDriver().navigate().back();
     }
 
+    /**
+     * Switch to Iframe
+     * @param iframe WebElement Iframe
+     */
+    public void switchToIframe(WebElement iframe){
+        getDriver().switchTo().frame(iframe);
+    }
+
     public WebDriver getDriver() {
         return driver;
     }
