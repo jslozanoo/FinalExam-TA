@@ -5,9 +5,11 @@ import org.apache.log4j.Logger;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
+import pages.HomePage;
 
 public class BaseTest {
     protected Driver driver;
+    protected HomePage homePage;
     protected Logger log = Logger.getLogger(BaseTest.class);
 
     @BeforeTest
@@ -16,6 +18,7 @@ public class BaseTest {
         driver = new Driver(browser);
         driver.getDriver().manage().window().maximize();
         driver.getDriver().get(url);
+        homePage = new HomePage(driver.getDriver());
     }
 
     @AfterTest
