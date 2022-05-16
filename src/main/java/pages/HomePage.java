@@ -22,6 +22,12 @@ public class HomePage extends BasePage{
     @FindBy(id = "oneid-iframe")
     private WebElement loginFrame;
 
+    @FindBy(id = "global-user-trigger")
+    private WebElement userIconButton;
+
+    @FindBy(css = "li[class*='user hover'] li.display-user")
+    private WebElement nameInUserContainer;
+
     /**
      * Constructor
      *
@@ -43,5 +49,22 @@ public class HomePage extends BasePage{
         switchToIframe(loginFrame);
 
         return new LoginPage(getDriver());
+    }
+
+    /**
+     * Click on user icon button
+     */
+    public void clickUserIconButton(){
+        while (!isElementAvailable(loginButton)){
+            click(userIconButton);
+        }
+    }
+
+    /**
+     * Get text displayed in user container
+     * @return String name
+     */
+    public String getNameInUserContainer(){
+        return nameInUserContainer.getText();
     }
 }

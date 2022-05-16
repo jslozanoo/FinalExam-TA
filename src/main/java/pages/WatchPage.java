@@ -60,9 +60,11 @@ public class WatchPage extends BasePage{
      * Select the second card in the first carrousel
      */
     public void clickCard(){
+        log.info("Entering to click card method");
         click(secondCardFirstCarousel);
         if(isElementAvailable(chooseProviderContainer)){
             switchToIframe(chooseProviderIframe);
+            log.info("Switching to Ifram");
         }
     }
 
@@ -71,6 +73,7 @@ public class WatchPage extends BasePage{
      * @return Boolean
      */
     public boolean isCloseProviderButtonDisplayed(){
+        log.info("Validating if closing button is displayed");
         return isElementAvailable(closeProviderSelectionButton);
     }
 
@@ -78,6 +81,7 @@ public class WatchPage extends BasePage{
      * Close choose provider selection window
      */
     public void closeProviderSelection(){
+        log.info("Closing chosing provider window");
         click(closeProviderSelectionButton);
     };
 
