@@ -74,4 +74,29 @@ public class SignupPage extends BasePage{
     public boolean isSignupButtonClickable(){
         return isElementClickable(signupButton);
     }
+
+    /**
+     * Complete form with lastname, firstname, email and password
+     * @param firstName String firstname
+     * @param lastName String lastname
+     * @param email String email
+     * @param password String password
+     */
+    public void completeForm(String firstName, String lastName, String email, String password){
+        sendKeys(firstNameInput, firstName);
+        sendKeys(lastNameInput, lastName);
+        sendKeys(emailInput, email);
+        sendKeys(passwordInput, password);
+    }
+
+    /**
+     * Click on signup button to create an account
+     * @return MainPage {@link MainPage}
+     */
+    public MainPage createAccount(){
+        scrollDownUntilElementVisibility(signupButton);
+        click(signupButton);
+
+        return new MainPage(getDriver());
+    }
 }
