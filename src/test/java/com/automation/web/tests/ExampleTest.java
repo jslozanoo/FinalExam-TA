@@ -31,5 +31,8 @@ public class ExampleTest extends BaseTest {
                 "Close provider selection button is not displayed");
         watchPage.closeProviderSelection();
         mainPage = watchPage.goBackToHomePage();
+        mainPage.clickUserIconButton();
+        Assert.assertEquals(mainPage.getNameInUserContainer(), "Welcome" user.getFirstName() + "!",
+                "Names are not equal");
     }
 }
