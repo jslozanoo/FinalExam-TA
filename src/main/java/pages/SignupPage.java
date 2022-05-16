@@ -63,7 +63,7 @@ public class SignupPage extends BasePage{
      * True if close button form is displayed
      * @return Boolean
      */
-    public boolean isCloseFormDisplayed(){
+    public boolean isCloseFormButtonDisplayed(){
         return isElementAvailable(closeFormButton);
     }
 
@@ -82,7 +82,7 @@ public class SignupPage extends BasePage{
      * @param email String email
      * @param password String password
      */
-    public void completeForm(String firstName, String lastName, String email, String password){
+    public void completeFormInputs(String firstName, String lastName, String email, String password){
         sendKeys(firstNameInput, firstName);
         sendKeys(lastNameInput, lastName);
         sendKeys(emailInput, email);
