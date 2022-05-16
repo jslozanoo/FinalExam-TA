@@ -78,6 +78,14 @@ public class BasePage {
     }
 
     /**
+     * Scroll down by pixels.
+     */
+    public void scrollDownByPixels(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,350)" ,"");
+    }
+
+    /**
      * Scroll down until element visibility
      * @param element Web element
      */
@@ -92,6 +100,13 @@ public class BasePage {
     public void scrollDownToBottom(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+    }
+
+    /**
+     * Go back to the previous page
+     */
+    public void goBack(){
+        getDriver().navigate().back();
     }
 
     public WebDriver getDriver() {
