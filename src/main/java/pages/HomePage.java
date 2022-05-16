@@ -15,6 +15,9 @@ public class HomePage extends BasePage{
     @FindBy(css = ".global-user[style] a[data-regformid]")
     private WebElement loginButton;
 
+    @FindBy(id = "oneid-iframe")
+    private WebElement loginFrame;
+
     /**
      * Constructor
      *
@@ -22,6 +25,14 @@ public class HomePage extends BasePage{
      */
     public HomePage(WebDriver driver) {
         super(driver);
+    }
+
+    /**
+     * Switch driver to login frame
+     * @param iFrame WebElement
+     */
+    public void switchToLoginFrame(WebElement iFrame){
+        getDriver().switchTo().frame(iFrame);
     }
 
     /**
@@ -33,6 +44,7 @@ public class HomePage extends BasePage{
         click(userButton);
         isElementAvailable(userContainer);
         click(loginButton);
+        switchToLoginFrame(loginFrame);
 
         return new LoginPage(getDriver());
     }
