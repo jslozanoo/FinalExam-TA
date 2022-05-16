@@ -21,6 +21,9 @@ public class WatchPage extends BasePage{
     @FindBy(id = "lsframe")
     private WebElement chooseProviderIframe;
 
+    @FindBy(css = "button[class*='closebtn']")
+    private WebElement closeProviderSelectionButton;
+
     /**
      * Constructor
      *
@@ -56,5 +59,28 @@ public class WatchPage extends BasePage{
      */
     public void clickCard(WebElement element){
         click(secondCardFirstCarousel);
+        switchToIframe(chooseProviderIframe);
+    }
+
+    /**
+     * True if close button in provider selection window is displayed. False otherwise
+     * @return Boolean
+     */
+    public boolean isCloseProviderButtonDisplayed(){
+        return isElementAvailable(closeProviderSelectionButton);
+    }
+
+    /**
+     * Close choose provider selection window
+     */
+    public void closeProviderSelection(){
+        click(closeProviderSelectionButton);
+    };
+
+    /**
+     * Go back to home page
+     */
+    public void goBackToHomePage(){
+        goBack();
     }
 }
