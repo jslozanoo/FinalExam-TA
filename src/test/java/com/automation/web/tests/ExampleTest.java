@@ -12,7 +12,7 @@ import pages.WatchPage;
 public class ExampleTest extends BaseTest {
 
     @Test(dataProvider = "user", dataProviderClass = Data.class)
-    public void exampleTest(User user) throws InterruptedException {
+    public void exampleTest(User user) {
         LoginPage loginPage = homePage.goToLoginPage();
         Assert.assertTrue(loginPage.isLogoDisplayed(), "Logo is not displayed");
         Assert.assertTrue(loginPage.areButtonsDisplayed(), "Buttons are not displayed");
@@ -32,7 +32,8 @@ public class ExampleTest extends BaseTest {
         watchPage.closeProviderSelection();
         mainPage = watchPage.goBackToHomePage();
         mainPage.clickUserIconButton();
-        Assert.assertEquals(mainPage.getNameInUserContainer(), "Welcome" user.getFirstName() + "!",
+        Assert.assertEquals(mainPage.getNameInUserContainer(), "Welcome" + user.getFirstName() + "!",
                 "Names are not equal");
+        homePage = mainPage.logout();
     }
 }
