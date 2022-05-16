@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 public class ExampleTest extends BaseTest {
 
     @Test
-    public void exampleTest(){
+    public void exampleTest() throws InterruptedException {
+        Thread.sleep(5000);
     }
 }
