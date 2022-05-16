@@ -43,6 +43,20 @@ public class BasePage {
     }
 
     /**
+     * Wrapper for invisibility event. True if element is invisible, false otherwise
+     * @param element
+     * @return
+     */
+    public boolean isElementInvisible(WebElement element){
+        try{
+            getWait().until(ExpectedConditions.invisibilityOf(element));
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    /**
      * Wrapper for clickable event. True if element is clickable, false otherwise.
      * @param element Web element to wait clickable
      * @return boolean
@@ -107,6 +121,16 @@ public class BasePage {
      */
     public void goBack(){
         getDriver().navigate().back();
+    }
+
+    /**
+     * Switch to Iframe
+     * @param iframe WebElement Iframe
+     */
+    public void switchToIframe(WebElement iframe){
+        if (isElementAvailable(iframe)){
+            getDriver().switchTo().frame(iframe);
+        }
     }
 
     public WebDriver getDriver() {

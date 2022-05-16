@@ -32,14 +32,6 @@ public class HomePage extends BasePage{
     }
 
     /**
-     * Switch driver to login frame
-     * @param iFrame WebElement
-     */
-    public void switchToLoginFrame(WebElement iFrame){
-        getDriver().switchTo().frame(iFrame);
-    }
-
-    /**
      * Click on login button
      * @return LoginPage {@link LoginPage}
      */
@@ -48,7 +40,7 @@ public class HomePage extends BasePage{
         click(userButton);
         isElementAvailable(userContainer);
         click(loginButton);
-        switchToLoginFrame(loginFrame);
+        switchToIframe(loginFrame);
 
         return new LoginPage(getDriver());
     }
