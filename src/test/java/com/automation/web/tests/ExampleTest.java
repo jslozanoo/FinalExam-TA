@@ -8,11 +8,10 @@ public class ExampleTest extends BaseTest {
     public void exampleTest() throws InterruptedException {
         mainPage.scrollDownByPixels();
         mainPage.setOriginDestination("Las Vegas");
-        mainPage.clickLasVegasDestinationButton();
         mainPage.setArrivalDestination("San Salvador");
-        mainPage.clickSanSalvadorDestinationButton();
-        mainPage.clickChoosePassengersButton();
         mainPage.addPassenger();
         mainPage.chooseDates();
+        mainPage.submitFlight();
+        Thread.sleep(8000);
     }
 }

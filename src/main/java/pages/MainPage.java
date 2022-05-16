@@ -49,6 +49,9 @@ public class MainPage extends BasePage{
     @FindBy(css = "div[id*='ida_regreso'] div[data-day='2022.6.18']")
     private WebElement juneEighteenDate;
 
+    @FindBy(css = "div[id*='ida_regreso'] div[data-month='2022.7'] div")
+    private WebElement julyMonthContainer;
+
     @FindBy(css = "div[id*='ida_regreso'] input[name='pbFechaRegreso']")
     private WebElement chooseArrivalDate;
 
@@ -57,6 +60,9 @@ public class MainPage extends BasePage{
 
     @FindBy(css = "div[id*='ida_regreso'] div[data-day='2022.8.20']")
     private WebElement augustTwentyDate;
+
+    @FindBy(css = "div[id*='ida_regreso'] button[type='submit']")
+    private WebElement submitFlightButton;
 
     /**
      * Constructor
@@ -75,57 +81,52 @@ public class MainPage extends BasePage{
     }
 
     /**
-     * Send keys to origin destination box.
+     * Set origin destination as Las Vegas
      * @param destination origin place
      */
     public void setOriginDestination(String destination){
         sendKeys(originDestinationInput, destination);
-    }
-
-    /**
-     * Send keys to arrival destination box
-     * @param toDestination
-     */
-    public void setArrivalDestination(String toDestination){
-        sendKeys(arrivalDestinationInput, toDestination);
-    }
-
-    /**
-     * Select Las Vegas as origin destination
-     */
-    public void clickLasVegasDestinationButton(){
         isElementAvailable(originCountriesSelectorContainer);
         click(selectLasVegasDestinationButton);
     }
 
     /**
-     * Select San Salvador as arrival destination
+     * Set arrival destination as San Salvador
+     * @param toDestination Arrival destination
      */
-    public void clickSanSalvadorDestinationButton() {
+    public void setArrivalDestination(String toDestination){
+        sendKeys(arrivalDestinationInput, toDestination);
         isElementAvailable(arrivalCountriesSelectorContainer);
         click(selectSanSalvadorDestinationButton);
     }
 
     /**
-     * Click choose passengers button
+     * Click add passengers button and add one passenger
      */
-    public void clickChoosePassengersButton(){
-        click(choosePassengersButton);
-    }
-
     public void addPassenger(){
+        click(choosePassengersButton);
         click(addPassengerButton);
     }
 
+    /**
+     * Choose dates flight from june 18 to august 20
+     */
     public void chooseDates() {
         click(chooseOriginDate);
         if (isElementAvailable(calendarContainer)){
             click(juneEighteenDate);
         }
-        click(chooseArrivalDate);
+        isElementAvailable(julyMonthContainer);
         if (isElementAvailable(calendarContainer)){
             click(nextMonthButton);
             click(augustTwentyDate);
         }
+    }
+
+    /**
+     * click submit flight button
+     */
+    public void submitFlight(){
+        click(submitFlightButton);
     }
 }
