@@ -40,4 +40,14 @@ public class LoginPage extends BasePage{
             return false;
         }
     }
+
+    /**
+     * Click on signup page to create an account.
+     * @return SignupPage {@link SignupPage}
+     */
+    public SignupPage goToSignupPage(){
+        click(signupButton);
+
+        return new SignupPage(getDriver());
+    }
 }
