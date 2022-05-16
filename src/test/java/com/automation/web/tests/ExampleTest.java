@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.SignupPage;
+import pages.WatchPage;
 
 public class ExampleTest extends BaseTest {
 
@@ -22,5 +23,6 @@ public class ExampleTest extends BaseTest {
         signupPage.completeFormInputs(user.getFirstName(), user.getLastName(),
                 user.getEmail(), user.getPassword());
         MainPage mainPage =  signupPage.createAccount();
+        WatchPage watchPage = mainPage.goToWatchPage();
     }
 }
