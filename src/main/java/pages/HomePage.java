@@ -55,11 +55,9 @@ public class HomePage extends BasePage{
      * Click on user icon button
      */
     public void clickUserIconButton(){
-        while (!isElementAvailable(loginButton)){
-            click(userIconButton);
-        }
+        click(userIconButton);
     }
-
+    
     /**
      * Get text displayed in user container
      * @return String name

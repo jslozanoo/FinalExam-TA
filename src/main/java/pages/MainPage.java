@@ -19,6 +19,9 @@ public class MainPage extends BasePage{
     @FindBy(css = "li[class*='user hover'] li.display-user")
     private WebElement nameInUserContainer;
 
+    @FindBy(linkText = "ESPN Profile")
+    private WebElement espnProfileButton;
+
     @FindBy(linkText = "Log Out")
     private WebElement logoutButton;
 
@@ -62,6 +65,7 @@ public class MainPage extends BasePage{
      */
     public HomePage logout(){
         click(logoutButton);
+        isElementInvisible(espnProfileButton);
 
         return new HomePage(getDriver());
     }

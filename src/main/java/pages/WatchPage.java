@@ -58,6 +58,7 @@ public class WatchPage extends BasePage{
      */
     public void clickSecondCardFirstCarousel(){
         click(secondCardFirstCarousel);
+        isElementAvailable(chooseProviderContainer);
     }
 
     /**
