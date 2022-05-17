@@ -53,16 +53,20 @@ public class HomePage extends BasePage{
     }
 
     /**
-     * Click on user icon button
+     * Click on user icon button and validate if login button is displayed
      */
     public void clickUserIconButton(){
-        try {
-            do {
+        boolean isThereAnException;
+        do {
+            try{
                 click(userIconButton);
-            }while (!loginButton.isDisplayed());
-        }catch (Exception e){
-             clickUserIconButton();
-        }
+                loginButton.isDisplayed();
+                isThereAnException = false;
+            }catch (Exception e){
+                isThereAnException = true;
+                log.info("Try");
+            }
+        }while (isThereAnException);
     }
 
     /**
