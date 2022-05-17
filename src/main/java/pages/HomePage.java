@@ -28,6 +28,9 @@ public class HomePage extends BasePage{
     @FindBy(css = "li[class*='user hover'] li.display-user")
     private WebElement nameInUserContainer;
 
+    @FindBy(linkText = "Watch")
+    private WebElement watchLink;
+
     /**
      * Constructor
      *
@@ -42,6 +45,7 @@ public class HomePage extends BasePage{
      * @return LoginPage {@link LoginPage}
      */
     public LoginPage goToLoginPage(){
+        log.info("Start login process");
         isElementAvailable(userButton);
         click(userButton);
         isElementAvailable(userContainer);
@@ -55,7 +59,9 @@ public class HomePage extends BasePage{
      * Click on user icon button
      */
     public void clickUserIconButton(){
-        click(userIconButton);
+        do {
+            click(userIconButton);
+        }while (!isElementAvailable(loginButton));
     }
 
     /**

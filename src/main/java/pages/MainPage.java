@@ -64,8 +64,8 @@ public class MainPage extends BasePage{
      * @return HomePage {@link HomePage}
      */
     public HomePage logout(){
+        log.info("Login out");
         click(logoutButton);
-        isElementInvisible(espnProfileButton);
 
         return new HomePage(getDriver());
     }

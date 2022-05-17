@@ -14,16 +14,21 @@ public class ExerciseTest extends BaseTest {
     @Test(dataProvider = "user", dataProviderClass = Data.class)
     public void exampleTest(User user) {
         LoginPage loginPage = homePage.goToLoginPage();
+        log.info("Validation in Login page");
         Assert.assertTrue(loginPage.isLogoDisplayed(), "Logo is not displayed");
         Assert.assertTrue(loginPage.areButtonsDisplayed(), "Buttons are not displayed");
+
         SignupPage signupPage = loginPage.goToSignupPage();
+        log.info("Validation in Signup Page");
         Assert.assertTrue(signupPage.isTitleDisplayed(), "Signup title is not displayed");
         Assert.assertTrue(signupPage.areInputsDisplayed(), "Inputs boxes are not displayed");
         Assert.assertTrue(signupPage.isCloseFormButtonDisplayed());
         signupPage.completeFormInputs(user.getFirstName(), user.getLastName(),
                 user.getEmail(), user.getPassword());
+
         MainPage mainPage =  signupPage.createAccount();
         WatchPage watchPage = mainPage.goToWatchPage();
+        log.info("Validations in Watch Page");
         Assert.assertTrue(watchPage.AreCarouselsPresent(), "There are no carousels present");
         Assert.assertTrue(watchPage.areCarouselsDisplayed(), "There are no carousels displayed");
         watchPage.clickSecondCardFirstCarousel();
@@ -32,10 +37,13 @@ public class ExerciseTest extends BaseTest {
         watchPage.closeProviderSelection();
         mainPage = watchPage.goBackToHomePage();
         mainPage.clickUserIconButton();
+        log.info("Welcome message: " + mainPage.getNameInUserContainer());
+        log.info("User name: " + user.getFirstName());
         Assert.assertEquals(mainPage.getNameInUserContainer(), "Welcome" + user.getFirstName() + "!",
                 "Names are not equal");
         homePage = mainPage.logout();
         homePage.clickUserIconButton();
+        log.info("Welcome message: " + homePage.getNameInUserContainer());
         Assert.assertEquals(homePage.getNameInUserContainer(), "Welcome!",
                 "Names are not equal");
     }

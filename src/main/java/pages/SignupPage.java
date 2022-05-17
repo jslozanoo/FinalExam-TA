@@ -87,6 +87,7 @@ public class SignupPage extends BasePage{
      * @param password String password
      */
     public void completeFormInputs(String firstName, String lastName, String email, String password){
+        log.info("Completing form inputs");
         sendKeys(firstNameInput, firstName);
         sendKeys(lastNameInput, lastName);
         sendKeys(emailInput, email);

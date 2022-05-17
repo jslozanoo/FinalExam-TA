@@ -38,6 +38,7 @@ public class WatchPage extends BasePage{
      * @return Boolean
      */
     public boolean AreCarouselsPresent(){
+        log.info("There are " + carousels.size() + " carousels");
         return carousels.size() > 0;
     }
 
@@ -74,12 +75,13 @@ public class WatchPage extends BasePage{
      */
     public void closeProviderSelection(){
         click(closeProviderSelectionButton);
-    };
+    }
 
     /**
      * Go back to home page
      */
     public MainPage goBackToHomePage(){
+        log.info("Returning to Main Page");
         goBack();
         return new MainPage(getDriver());
     }
