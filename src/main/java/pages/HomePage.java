@@ -57,7 +57,7 @@ public class HomePage extends BasePage{
     public void clickUserIconButton(){
         click(userIconButton);
     }
-    
+
     /**
      * Get text displayed in user container
      * @return String name

@@ -9,7 +9,7 @@ import pages.MainPage;
 import pages.SignupPage;
 import pages.WatchPage;
 
-public class ExampleTest extends BaseTest {
+public class ExerciseTest extends BaseTest {
 
     @Test(dataProvider = "user", dataProviderClass = Data.class)
     public void exampleTest(User user) {
