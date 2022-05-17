@@ -18,11 +18,13 @@ public class BaseTest {
         driver = new Driver(browser);
         driver.getDriver().manage().window().maximize();
         driver.getDriver().get(url);
+        log.info("Loading espn page");
         homePage = new HomePage(driver.getDriver());
     }
 
     @AfterTest
     public void afterTest(){
+        log.info("Closing driver");
         driver.getDriver().quit();
     }
 }

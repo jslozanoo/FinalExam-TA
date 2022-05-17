@@ -25,7 +25,7 @@ public class BasePage {
     public BasePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 15);
+        wait = new WebDriverWait(driver, 10);
     }
 
     /**
@@ -44,8 +44,8 @@ public class BasePage {
 
     /**
      * Wrapper for invisibility event. True if element is invisible, false otherwise
-     * @param element
-     * @return
+     * @param element WebElement
+     * @return Boolean
      */
     public boolean isElementInvisible(WebElement element){
         try{

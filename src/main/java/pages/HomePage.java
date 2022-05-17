@@ -42,6 +42,7 @@ public class HomePage extends BasePage{
      * @return LoginPage {@link LoginPage}
      */
     public LoginPage goToLoginPage(){
+        log.info("Start login process");
         isElementAvailable(userButton);
         click(userButton);
         isElementAvailable(userContainer);
@@ -55,8 +56,12 @@ public class HomePage extends BasePage{
      * Click on user icon button
      */
     public void clickUserIconButton(){
-        while (!isElementAvailable(loginButton)){
-            click(userIconButton);
+        try {
+            do {
+                click(userIconButton);
+            }while (!loginButton.isDisplayed());
+        }catch (Exception e){
+             clickUserIconButton();
         }
     }
 
