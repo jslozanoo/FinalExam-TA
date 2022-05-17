@@ -18,9 +18,6 @@ public class WatchPage extends BasePage{
     @FindBy(xpath = "//section[contains(@class, 'Container')]/div[1]//li[contains(@data-carousel-id, '1')]")
     private WebElement secondCardFirstCarousel;
 
-    @FindBy(id = "lsframe")
-    private WebElement chooseProviderIframe;
-
     @FindBy(css = "button[class*='closebtn']")
     private WebElement closeProviderSelectionButton;
 
@@ -59,13 +56,8 @@ public class WatchPage extends BasePage{
     /**
      * Select the second card in the first carrousel
      */
-    public void clickCard(){
-        log.info("Entering to click card method");
+    public void clickSecondCardFirstCarousel(){
         click(secondCardFirstCarousel);
-        if(isElementAvailable(chooseProviderContainer)){
-            switchToIframe(chooseProviderIframe);
-            log.info("Switching to Ifram");
-        }
     }
 
     /**
@@ -73,7 +65,6 @@ public class WatchPage extends BasePage{
      * @return Boolean
      */
     public boolean isCloseProviderButtonDisplayed(){
-        log.info("Validating if closing button is displayed");
         return isElementAvailable(closeProviderSelectionButton);
     }
 
@@ -81,7 +72,6 @@ public class WatchPage extends BasePage{
      * Close choose provider selection window
      */
     public void closeProviderSelection(){
-        log.info("Closing chosing provider window");
         click(closeProviderSelectionButton);
     };
 
