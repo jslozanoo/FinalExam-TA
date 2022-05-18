@@ -64,7 +64,6 @@ public class HomePage extends BasePage{
                 isThereAnException = false;
             }catch (Exception e){
                 isThereAnException = true;
-                log.info("Try");
             }
         }while (isThereAnException);
     }

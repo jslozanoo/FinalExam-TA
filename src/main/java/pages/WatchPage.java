@@ -12,8 +12,11 @@ public class WatchPage extends BasePage{
     @FindBy(css = "section[class*='Carousel']")
     private List<WebElement> carousels;
 
-    @FindBy(css = "section[class*='Carousel'] div[class*='Header']")
-    private List<WebElement> carouselsTitles;
+    @FindBy(css = ".WatchTile__Content span span")
+    private List<WebElement> cardsTitles;
+
+    @FindBy(css = ".WatchTile__Meta")
+    private List<WebElement> streamingSourceInfo;
 
     @FindBy(xpath = "//section[contains(@class, 'Container')]/div[1]//li[contains(@data-carousel-id, '1')]")
     private WebElement secondCardFirstCarousel;
@@ -52,6 +55,30 @@ public class WatchPage extends BasePage{
             isElementPresent.add(carousel.isDisplayed());
         });
         return isElementPresent.contains(true);
+    }
+
+    /**
+     * True if there are at least one title in a card displayed
+     * @return Boolean
+     */
+    public boolean areCardsTitlesDisplayed(){
+        List<Boolean> areTitlePresents = new ArrayList<>();
+        cardsTitles.forEach(title->{
+            areTitlePresents.add(title.isDisplayed());
+        });
+        return areTitlePresents.contains(true);
+    }
+
+    /**
+     * True if there are at least one streaming source information displayed in a card
+     * @return Boolean
+     */
+    public boolean areStreamingSourceInfoDisplayed(){
+        List<Boolean> areStreamingSourcePresents = new ArrayList<>();
+        streamingSourceInfo.forEach(streamingSource->{
+            areStreamingSourcePresents.add(streamingSource.isDisplayed());
+        });
+        return areStreamingSourcePresents.contains(true);
     }
 
     /**

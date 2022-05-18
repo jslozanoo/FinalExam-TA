@@ -75,8 +75,8 @@ public class SignupPage extends BasePage{
      * True if signup button is clickable. False otherwise
      * @return Boolean
      */
-    public boolean isSignupButtonClickable(){
-        return isElementClickable(signupButton);
+    public boolean isSignupButtonDisplayed(){
+        return isElementAvailable(signupButton);
     }
 
     /**
